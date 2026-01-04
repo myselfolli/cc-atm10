@@ -2,11 +2,11 @@
 local base = "https://raw.githubusercontent.com/myselfolli/cc-atm10/refs/heads/master/"
 
 local files = {
-  "ui/element.lua",
-  "ui/container.lua",
-  "ui/button.lua",
-  "ui/label.lua",
-  "ui/ui.lua",
+  "lib/element.lua",
+  "lib/container.lua",
+  "lib/button.lua",
+  "lib/label.lua",
+  "lib/ui.lua",
 }
 
 for _, file in ipairs(files) do
