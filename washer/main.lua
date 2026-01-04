@@ -47,7 +47,7 @@ local ui = UI:new(monitor)
 
 local monWidth, monHeight = monitor.getSize()
 
-local speedPanel = GridContainer:new(1, 1, monWidth, monHeight, 5, 6):setBackgroundColor(colors.lightGray)
+local speedPanel = GridContainer:new(1, 1, monWidth, monHeight, 5, 6):setBackgroundColor(colors.black)
 local speedLabel = Label:new("Current Speed: " .. currentSpeed .. " RPM")
 
 ui:add(speedPanel)
