@@ -57,3 +57,5 @@ function GridContainer:draw()
 
   self.dirty = false
 end
+
+return GridContainer
