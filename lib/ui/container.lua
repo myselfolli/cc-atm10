@@ -23,8 +23,8 @@ function Container:draw()
 
   -- draw background
   local x, y = self:getAbsolutePosition()
-  t.setBackgroundColor(self.bg)
-  t.setTextColor(self.fg)
+  t.setBackgroundColor(self:getBG())
+  t.setTextColor(self:getFG())
 
   for dy = 0, self.height - 1 do
     t.setCursorPos(x, y + dy)

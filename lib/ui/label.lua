@@ -16,8 +16,8 @@ function Label:draw()
   local ax, ay = self:getAbsolutePosition()
 
   t.setCursorPos(ax, ay)
-  t.setTextColor(self.fg)
-  t.setBackgroundColor(self.bg)
+  t.setTextColor(self:getFG())
+  t.setBackgroundColor(self:getBG())
   t.write(self.text)
 
   self.dirty = false
