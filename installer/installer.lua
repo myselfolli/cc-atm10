@@ -12,12 +12,6 @@ local libs = {
       "ui/ui.lua",
     },
   },
-  utils = {
-    files = {
-      "utils/file.lua",
-      "utils/math.lua",
-    },
-  }
 }
 
 -- define programs and their dependencies
@@ -147,6 +141,5 @@ for _, idx in ipairs(selectedIndices) do
   local progName = programNames[idx]
   installProgram(progName)
 end
-installProgram(input)
 
 print("Installation complete")
