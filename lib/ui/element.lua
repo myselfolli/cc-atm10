@@ -76,9 +76,9 @@ end
 function UIElement:containsPoint(mx, my)
   return self.visible
     and mx >= self.x
-    and mx < self.x + self.width
+    and mx < (self.x + self.width)
     and my >= self.y
-    and my < self.y + self.height
+    and my < (self.y + self.height)
 end
 
 -- fallback term: own term or parent's, or global term
