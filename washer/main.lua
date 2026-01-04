@@ -58,7 +58,9 @@ end
 
 speedPanel:add(Button:new("+", function()
   print("'+' button clicked")
+  print(currentSpeed)
   currentSpeed = math.min(currentSpeed + STEP, 512)
+  print(currentSpeed)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
 end):setTextColor(colors.green), 3, 2)
