@@ -8,6 +8,11 @@ function GridContainer:new(x, y, width, height, rows, cols)
   local obj = setmetatable(Container:new(x, y, width, height), self)
   obj.rows = rows or 1
   obj.cols = cols or 1
+
+  print("GridContainer created with " .. obj.rows .. " rows and " .. obj.cols .. " cols")
+  print("Width: " .. obj.width .. ", Height: " .. obj.height)
+  print("That leaves col width: " .. math.floor(obj.width / obj.cols) .. " and row height: " .. math.floor(obj.height / obj.rows))
+
   return obj
 end
 -- Add a child to a grid cell

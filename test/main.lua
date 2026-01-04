@@ -12,8 +12,10 @@ end
 monitor.clear()
 monitor.setTextScale(1)
 
+local monWidth, monHeight = monitor.getSize()
+
 local ui = UI:new(monitor)
-local grid = GridContainer:new(1, 1, monitor.getSize(), 5, 5):setBackgroundColor(colors.blue)
+local grid = GridContainer:new(1, 1, monWidth, monHeight, 5, 5):setBackgroundColor(colors.blue)
 
 grid:add(Label:new("Label 1"), 1, 1)
 grid:add(Label:new("Label 2"), 2, 2)
