@@ -26,12 +26,11 @@ function Container:draw()
   local t = self:getTerm()
 
   -- draw background
-  local x, y = self:getAbsolutePosition()
   t.setBackgroundColor(self:getBG())
   t.setTextColor(self:getFG())
 
   for dy = 0, self.height - 1 do
-    t.setCursorPos(x, y + dy)
+    t.setCursorPos(self.x, self.y + dy)
     t.write(string.rep(" ", self.width))
   end
 

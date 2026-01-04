@@ -65,14 +65,6 @@ function UIElement:setVisible(visible)
   return self
 end
 
-function UIElement:getAbsolutePosition()
-  if self.parent then
-    local px, py = self.parent:getAbsolutePosition()
-    return px + self.x - 1, py + self.y - 1
-  end
-  return self.x, self.y
-end
-
 function UIElement:markDirty()
   self.dirty = true
   if self.parent then

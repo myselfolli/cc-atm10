@@ -15,9 +15,8 @@ function Button:draw()
   if not self.visible or not self.dirty then return end
 
   local t = self:getTerm()
-  local ax, ay = self:getAbsolutePosition()
 
-  t.setCursorPos(ax, ay)
+  t.setCursorPos(self.x, self.y)
   t.setTextColor(self:getFG())
   t.setBackgroundColor(self:getBG())
 
