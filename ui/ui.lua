@@ -38,6 +38,7 @@ function UI:run()
       self:handleEvent("mouse_click", 1, x, y)
     else
       self:handleEvent(table.unpack(e))
+    end
   end
 end
 
