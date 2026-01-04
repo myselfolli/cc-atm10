@@ -76,9 +76,10 @@ local function multiSelectMenu(options)
 
   -- convert boolean table to list of indices
   local result = {}
-  for i, v in ipairs(selected) do
+  for i, v in pairs(selected) do
     if v then table.insert(result, i) end
   end
+  table.sort(result)
   return result
 end
 
