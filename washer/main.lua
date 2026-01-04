@@ -3,7 +3,7 @@ package.path = "/lib/?.lua;" .. "/lib/?/init.lua;" .. package.path
 local UI = require("ui.ui")
 local Button = require("ui.button")
 local Label = require("ui.label")
-local GridContainer = require("ui.gridContainer")
+local GridContainer = require("ui.gridcontainer")
 
 -- SETUP
 

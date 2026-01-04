@@ -7,7 +7,7 @@ local libs = {
     files = {
       "ui/element.lua",
       "ui/container.lua",
-      "ui/gridContainer.lua",
+      "ui/gridcontainer.lua",
       "ui/button.lua",
       "ui/label.lua",
       "ui/ui.lua",
