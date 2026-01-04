@@ -46,6 +46,25 @@ function UIElement:setColors(fg, bg)
   return self
 end
 
+function UIElement:setBackgroundColor(bg)
+  self.bg = bg
+  self:markDirty()
+  return self
+end
+
+function UIElement:setTextColor(fg)
+  self.fg = fg
+  self:markDirty()
+  return self
+end
+
+
+function UIElement:setVisible(visible)
+  self.visible = visible
+  self:markDirty()
+  return self
+end
+
 function UIElement:getAbsolutePosition()
   if self.parent then
     local px, py = self.parent:getAbsolutePosition()
