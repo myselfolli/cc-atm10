@@ -46,7 +46,7 @@ end
 local ui = UI:new(monitor)
 local title = Label:new(2, 2, "Washer Speed Control")
 
-local speedPanel = Container:new(1, 1, 40, 10)
+local speedPanel = Container:new(1, 1, 40, 10):setColors(colors.lightGray, colors.black)
 local speedLabel = Label:new(2, 3, "Current Speed: " .. currentSpeed .. " RPM")
 
 local function updateSpeedLabel()
