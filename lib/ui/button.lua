@@ -27,9 +27,6 @@ end
 
 
 function Button:handleEvent(event, button, x, y)
-  print("Button handling event: " .. event)
-  local iwasClicked = self:containsPoint(x, y)
-  print("Button was clicked: " .. tostring(iwasClicked))
   if event == "mouse_click" and self:containsPoint(x, y) then
     if self.onClick then
       self.onClick()
