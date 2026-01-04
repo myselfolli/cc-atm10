@@ -31,8 +31,8 @@ function Button:handleEvent(event, button, x, y)
     print("Button received mouse_click event at (" .. x .. ", " .. y .. "), button is at " .. self.x .. ", " .. self.y)
     if self:containsPoint(x, y) then
       print("Button '" .. self.text .. "' was clicked")
-      if self.onClick then
-        self.onClick()
+      if self.callback then
+        self.callback()
       end
     end
   end
