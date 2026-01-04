@@ -18,7 +18,7 @@ local libs = {
 local programs = {
   washer = {
     files = {
-      "washer/washer.lua",
+      "washer/main.lua",
     },
     dependencies = {"ui"},  -- names from libs table
   },
