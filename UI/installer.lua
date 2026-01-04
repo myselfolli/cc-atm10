@@ -1,5 +1,5 @@
 -- install.lua
-local base = "https://raw.githubusercontent.com/myselfolli/cc-atm10/master/"
+local base = "https://raw.githubusercontent.com/myselfolli/cc-atm10/refs/heads/master/"
 
 local files = {
   "ui/element.lua",
