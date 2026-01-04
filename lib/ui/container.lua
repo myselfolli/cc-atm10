@@ -21,7 +21,7 @@ function Container:add(child)
 end
 
 function Container:draw()
-  if not self.visible or not self.dirty then return end
+  if not self.visible then return end
 
   local t = self:getTerm()
 
@@ -35,11 +35,8 @@ function Container:draw()
   end
 
   for _, child in ipairs(self.children) do
-    child:markDirty()
     child:draw()
   end
-
-  self.dirty = false
 end
 
 function Container:handleEvent(event, ...)

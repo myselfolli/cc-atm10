@@ -11,15 +11,13 @@ function Label:new(text)
 end
 
 function Label:draw()
-  if not self.visible or not self.dirty then return end
+  if not self.visible then return end
   local t = self:getTerm()
 
   t.setCursorPos(self.x, self.y)
   t.setTextColor(self:getFG())
   t.setBackgroundColor(self:getBG())
   t.write(self.text)
-
-  self.dirty = false
 end
 
 return Label

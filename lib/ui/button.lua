@@ -12,7 +12,7 @@ function Button:new(text, callback)
 end
 
 function Button:draw()
-  if not self.visible or not self.dirty then return end
+  if not self.visible then return end
 
   local t = self:getTerm()
 
@@ -21,8 +21,6 @@ function Button:draw()
   t.setBackgroundColor(self:getBG())
 
   t.write("[" .. self.text .. "]")
-
-  self.dirty = false
 end
 
 

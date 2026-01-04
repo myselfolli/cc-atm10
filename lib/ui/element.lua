@@ -15,7 +15,6 @@ function UIElement:new()
 
   obj.parent = nil
   obj.term = nil
-  obj.dirty = true
   return obj
 end
 
@@ -42,34 +41,22 @@ end
 function UIElement:setColors(fg, bg)
   self.fg = fg or self.fg
   self.bg = bg or self.bg
-  self:markDirty()
   return self
 end
 
 function UIElement:setBackgroundColor(bg)
   self.bg = bg
-  self:markDirty()
   return self
 end
 
 function UIElement:setTextColor(fg)
   self.fg = fg
-  self:markDirty()
   return self
 end
 
 
 function UIElement:setVisible(visible)
   self.visible = visible
-  self:markDirty()
-  return self
-end
-
-function UIElement:markDirty()
-  self.dirty = true
-  if self.parent then
-    self.parent:markDirty()
-  end
   return self
 end
 

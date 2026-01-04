@@ -54,7 +54,6 @@ ui:add(speedPanel)
 
 local function updateSpeedLabel()
   speedLabel.text = "Current Speed: " .. currentSpeed .. " RPM"
-  speedLabel:markDirty()
   ui:draw()
 end
 

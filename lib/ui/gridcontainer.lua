@@ -69,8 +69,6 @@ function GridContainer:draw()
     child.height = h
     child:draw()
   end
-
-  self.dirty = false
 end
 
 return GridContainer
