@@ -16,21 +16,25 @@ function Container:add(child)
 end
 
 function Container:draw()
-  if not self.visible then return end
+  if not self.visible or not self.dirty then return end
+
+  local t = self:getTerm()
 
   -- draw background
   local x, y = self:getAbsolutePosition()
-  term.setBackgroundColor(self.bg)
-  term.setTextColor(self.fg)
+  t.setBackgroundColor(self.bg)
+  t.setTextColor(self.fg)
 
   for dy = 0, self.height - 1 do
-    term.setCursorPos(x, y + dy)
-    term.write(string.rep(" ", self.width))
+    t.setCursorPos(x, y + dy)
+    t.write(string.rep(" ", self.width))
   end
 
   for _, child in ipairs(self.children) do
     child:draw()
   end
+
+  self.dirty = false
 end
 
 function Container:handleEvent(event, ...)

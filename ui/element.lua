@@ -14,12 +14,15 @@ function UIElement:new(x, y, width, height)
   obj.bg = colors.black
 
   obj.parent = nil
+  obj.term = nil
+  obj.dirty = true
   return obj
 end
 
 function UIElement:setColors(fg, bg)
   self.fg = fg or self.fg
   self.bg = bg or self.bg
+  self:markDirty()
 end
 
 function UIElement:getAbsolutePosition()
@@ -28,6 +31,20 @@ function UIElement:getAbsolutePosition()
     return px + self.x - 1, py + self.y - 1
   end
   return self.x, self.y
+end
+
+function UIElement:markDirty()
+  self.dirty = true
+  if self.parent then
+    self.parent:markDirty()
+  end
+end
+
+-- fallback term: own term or parent's, or global term
+function UIElement:getTerm()
+  if self.term then return self.term end
+  if self.parent then return self.parent:getTerm() end
+  return term
 end
 
 function UIElement:contains(px, py)

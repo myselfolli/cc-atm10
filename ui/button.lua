@@ -12,14 +12,18 @@ function Button:new(x, y, width, text, onClick)
 end
 
 function Button:draw()
-  if not self.visible then return end
+  if not self.visible or not self.dirty then return end
 
-  local x, y = self:getAbsolutePosition()
-  term.setCursorPos(x, y)
-  term.setTextColor(self.fg)
-  term.setBackgroundColor(self.bg)
+  local t = self:getTerm()
+  local ax, ay = self:getAbsolutePosition()
 
-  term.write("[" .. self.text .. "]")
+  t.setCursorPos(ax, ay)
+  t.setTextColor(self.fg)
+  t.setBackgroundColor(self.bg)
+
+  t.write("[" .. self.text .. "]")
+
+  self.dirty = false
 end
 
 

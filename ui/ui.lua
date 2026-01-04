@@ -2,18 +2,20 @@
 local UI = {}
 UI.__index = UI
 
-function UI:new()
+function UI:new(termObj)
   local obj = setmetatable({}, self)
   obj.elements = {}
+  obj.term = termObj or term
   return obj
 end
 
 function UI:add(element)
+  element.parent = nil
+  element.term = self.term
   table.insert(self.elements, element)
 end
 
 function UI:draw()
-  term.clear()
   for _, el in ipairs(self.elements) do
     el:draw()
   end

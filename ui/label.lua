@@ -11,9 +11,16 @@ function Label:new(x, y, text)
 end
 
 function Label:draw()
-  if not self.visible then return end
-  term.setCursorPos(self.x, self.y)
-  term.write(self.text)
+  if not self.visible or not self.dirty then return end
+  local t = self:getTerm()
+  local ax, ay = self:getAbsolutePosition()
+
+  t.setCursorPos(ax, ay)
+  t.setTextColor(self.fg)
+  t.setBackgroundColor(self.bg)
+  t.write(self.text)
+
+  self.dirty = false
 end
 
 return Label
