@@ -23,6 +23,7 @@ function UIElement:setColors(fg, bg)
   self.fg = fg or self.fg
   self.bg = bg or self.bg
   self:markDirty()
+  return self
 end
 
 function UIElement:getAbsolutePosition()
@@ -38,6 +39,7 @@ function UIElement:markDirty()
   if self.parent then
     self.parent:markDirty()
   end
+  return self
 end
 
 -- fallback term: own term or parent's, or global term

@@ -57,19 +57,19 @@ speedPanel:add(Button:new(2, 4, 12, "+", function()
   currentSpeed = math.min(currentSpeed + STEP, 512)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end))
+end):setColors(colors.green, colors.black))
 
 speedPanel:add(Button:new(16, 4, 12, "-", function()
   currentSpeed = math.max(currentSpeed - STEP, 0)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end))
+end):setColors(colors.orange, colors.black))
 
 speedPanel:add(Button:new(30, 4, 12, "Stop", function()
   currentSpeed = 0
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end))
+end):setColors(colors.red, colors.black))
 
 speedPanel:add(speedLabel)
 

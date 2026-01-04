@@ -13,6 +13,7 @@ end
 function Container:add(child)
   child.parent = self
   table.insert(self.children, child)
+  return self
 end
 
 function Container:draw()
