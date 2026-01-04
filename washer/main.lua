@@ -61,19 +61,19 @@ speedPanel:add(Button:new("+", function()
   currentSpeed = math.min(currentSpeed + STEP, 512)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.green), 4, 2)
+end):setTextColor(colors.green), 4, 3)
 
 speedPanel:add(Button:new("-", function()
   currentSpeed = math.max(currentSpeed - STEP, 0)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.orange), 4, 4)
+end):setTextColor(colors.orange), 4, 5)
 
 speedPanel:add(Button:new("Stop", function()
   currentSpeed = 0
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.red), 5, 3)
+end):setTextColor(colors.red), 5, 4)
 
 speedPanel:add(speedLabel, 3, 3)
 speedPanel:add(Label:new("Washer Speed Control"), 1, 3)
