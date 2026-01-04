@@ -31,7 +31,13 @@ function UI:run()
   self:draw()
   while true do
     local e = { os.pullEvent() }
-    self:handleEvent(table.unpack(e))
+    local eventType = e[1]
+
+    if eventType == "monitor_touch" then
+      local _, _, x, y = table.unpack(e)
+      self:handleEvent("mouse_click", 1, x, y)
+    else
+      self:handleEvent(table.unpack(e))
   end
 end
 
