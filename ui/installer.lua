@@ -10,6 +10,12 @@ local files = {
 }
 
 for _, file in ipairs(files) do
+  -- delete existing file if it exists
+  if fs.exists(file) then
+    fs.delete(file)
+  end
+
+  -- download the file
   shell.run("wget", base .. file, file)
 end
 
