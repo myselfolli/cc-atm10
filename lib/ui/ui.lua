@@ -34,7 +34,6 @@ function UI:run()
     local eventType = e[1]
 
     if eventType == "monitor_touch" then
-      print("Monitor touch event received")
       local _, _, x, y = table.unpack(e)
       self:handleEvent("mouse_click", 1, x, y)
     else
