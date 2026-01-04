@@ -75,3 +75,7 @@ speedPanel:add(speedLabel)
 
 ui:add(title)
 ui:add(speedPanel)
+
+-- Start UI loop
+setMotorSpeed(currentSpeed)
+ui:run()
