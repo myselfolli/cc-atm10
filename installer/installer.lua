@@ -142,6 +142,7 @@ end
 write("Which program to install? ")
 local programNames = {}
 for name,_ in pairs(programs) do table.insert(programNames, name) end
+table.sort(programNames)
 
 local selectedIndices = multiSelectMenu(programNames)
 for _, idx in ipairs(selectedIndices) do
