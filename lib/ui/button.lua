@@ -28,7 +28,7 @@ end
 
 
 function Button:handleEvent(event, button, x, y)
-  if event == "mouse_click" and self:contains(x, y) then
+  if event == "mouse_click" and self:containsPoint(x, y) then
     if self.onClick then
       self.onClick()
     end

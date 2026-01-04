@@ -81,19 +81,19 @@ function UIElement:markDirty()
   return self
 end
 
+function UIElement:containsPoint(mx, my)
+  return self.visible
+    and mx >= self.x
+    and mx < self.x + self.width
+    and my >= self.y
+    and my < self.y + self.height
+end
+
 -- fallback term: own term or parent's, or global term
 function UIElement:getTerm()
   if self.term then return self.term end
   if self.parent then return self.parent:getTerm() end
   return term
-end
-
-function UIElement:contains(px, py)
-  local ax, ay = self:getAbsolutePosition()
-  return px >= ax
-     and px < ax + self.width
-     and py >= ay
-     and py < ay + self.height
 end
 
 function UIElement:draw()

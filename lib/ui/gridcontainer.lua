@@ -23,6 +23,13 @@ function GridContainer:add(child, row, col, rowSpan, colSpan)
   child.gridCol = col or 1
   child.rowSpan = rowSpan or 1
   child.colSpan = colSpan or 1
+
+  local x, y, w, h = self:getChildAbsolutePosition(child)
+  child.x = x
+  child.y = y
+  child.width = w
+  child.height = h
+
   table.insert(self.children, child)
   return self
 end
@@ -56,7 +63,10 @@ function GridContainer:draw()
   -- Draw children
   for _, child in ipairs(self.children) do
     local x, y, w, h = self:getChildAbsolutePosition(child)
-    child.x, child.y, child.width, child.height = x, y, w, h
+    child.x = x
+    child.y = y
+    child.width = w
+    child.height = h
     child:draw()
   end
 
