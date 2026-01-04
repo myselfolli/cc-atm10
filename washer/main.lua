@@ -3,7 +3,7 @@ package.path = "/lib/?.lua;" .. "/lib/?/init.lua;" .. package.path
 local UI = require("ui.ui")
 local Button = require("ui.button")
 local Label = require("ui.label")
-local Container = require("ui.container")
+local GridContainer = require("ui.gridContainer")
 
 -- SETUP
 
@@ -44,10 +44,9 @@ end
 -- UI Setup
 
 local ui = UI:new(monitor)
-local title = Label:new(2, 2, "Washer Speed Control")
 
-local speedPanel = Container:new(1, 1, 40, 10):setBackgroundColor(colors.lightGray)
-local speedLabel = Label:new(2, 3, "Current Speed: " .. currentSpeed .. " RPM")
+local speedPanel = GridContainer:new(1, 1, monitor.getSize(), 5, 5):setBackgroundColor(colors.lightGray)
+local speedLabel = Label:new("Current Speed: " .. currentSpeed .. " RPM")
 
 local function updateSpeedLabel()
   speedLabel.text = "Current Speed: " .. currentSpeed .. " RPM"
@@ -55,27 +54,27 @@ local function updateSpeedLabel()
   ui:draw()
 end
 
-speedPanel:add(Button:new(2, 4, 12, "+", function()
+speedPanel:add(Button:new("+", function()
   currentSpeed = math.min(currentSpeed + STEP, 512)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.green))
+end):setTextColor(colors.green), 3, 2)
 
-speedPanel:add(Button:new(16, 4, 12, "-", function()
+speedPanel:add(Button:new("-", function()
   currentSpeed = math.max(currentSpeed - STEP, 0)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.orange))
+end):setTextColor(colors.orange), 3, 3)
 
-speedPanel:add(Button:new(30, 4, 12, "Stop", function()
+speedPanel:add(Button:new("Stop", function()
   currentSpeed = 0
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.red))
+end):setTextColor(colors.red), 4, 2, 1, 3)
 
-speedPanel:add(speedLabel)
+speedPanel:add(speedLabel, 2, 1, 1, 5)
+speedPanel:add(Label:new("Washer Speed Control"), 1, 2, 1, 3)
 
-ui:add(title)
 ui:add(speedPanel)
 
 -- Start UI loop

@@ -1,11 +1,15 @@
 -- ui/container.lua
 local UIElement = require("ui.element")
 
-local Container = setmetatable({}, UIElement)
+Container = setmetatable({}, {__index = UIElement})
 Container.__index = Container
 
 function Container:new(x, y, width, height)
-  local obj = UIElement.new(self, x, y, width, height)
+  local obj = setmetatable(UIElement:new(), self)
+  obj.x = x or 1
+  obj.y = y or 1
+  obj.width = width or 10
+  obj.height = height or 5
   obj.children = {}
   return obj
 end

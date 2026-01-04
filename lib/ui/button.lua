@@ -1,13 +1,13 @@
 -- ui/button.lua
 local UIElement = require("ui.element")
 
-local Button = setmetatable({}, UIElement)
+Button = setmetatable({}, {__index = UIElement})
 Button.__index = Button
 
-function Button:new(x, y, width, text, onClick)
-  local obj = UIElement.new(self, x, y, width, 1)
-  obj.text = text
-  obj.onClick = onClick
+function Button:new(text, callback)
+  local obj = setmetatable(UIElement:new(), self)
+  obj.text = text or ""
+  obj.callback = callback
   return obj
 end
 

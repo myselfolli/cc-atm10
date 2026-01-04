@@ -2,12 +2,12 @@
 local UIElement = {}
 UIElement.__index = UIElement
 
-function UIElement:new(x, y, width, height)
+function UIElement:new()
   local obj = setmetatable({}, self)
-  obj.x = x
-  obj.y = y
-  obj.width = width
-  obj.height = height
+  obj.x = 0
+  obj.y = 0
+  obj.width = 0
+  obj.height = 0
   obj.visible = true
 
   obj.fg = nil

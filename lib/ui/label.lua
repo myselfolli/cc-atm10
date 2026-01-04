@@ -1,12 +1,12 @@
 -- ui/label.lua
 local UIElement = require("ui.element")
 
-local Label = setmetatable({}, UIElement)
+Label = setmetatable({}, {__index = UIElement})
 Label.__index = Label
 
-function Label:new(x, y, text)
-  local obj = UIElement.new(self, x, y, #text, 1)
-  obj.text = text
+function Label:new(text)
+  local obj = setmetatable(UIElement:new(), self)
+  obj.text = text or ""
   return obj
 end
 
