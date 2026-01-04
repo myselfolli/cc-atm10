@@ -2,6 +2,7 @@ package.path = "/lib/?.lua;" .. "/lib/?/init.lua;" .. package.path
 
 local Label = require("ui.label")
 local GridContainer = require("ui.gridcontainer")
+local UI = require("ui.ui")
 
 local monitor = peripheral.find("monitor")
 if not monitor then
