@@ -57,18 +57,21 @@ local function updateSpeedLabel()
 end
 
 speedPanel:add(Button:new("+", function()
+  print("'+' button clicked")
   currentSpeed = math.min(currentSpeed + STEP, 512)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
 end):setTextColor(colors.green), 3, 2)
 
 speedPanel:add(Button:new("-", function()
+  print("'-' button clicked")
   currentSpeed = math.max(currentSpeed - STEP, 0)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
 end):setTextColor(colors.orange), 3, 3)
 
 speedPanel:add(Button:new("Stop", function()
+  print("'Stop' button clicked")
   currentSpeed = 0
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()

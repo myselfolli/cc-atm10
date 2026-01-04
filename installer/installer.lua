@@ -37,8 +37,8 @@ local function multiSelectMenu(options)
 
   local function draw()
     term.clear()
-    term.setCursorPos(1,1)
     for i, option in ipairs(options) do
+      term.setCursorPos(1,i)
       local mark = selected[i] and "x" or " "
       if i == current then
         term.setBackgroundColor(colors.gray)
