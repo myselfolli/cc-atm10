@@ -47,7 +47,7 @@ local ui = UI:new(monitor)
 
 local monWidth, monHeight = monitor.getSize()
 
-local speedPanel = GridContainer:new(1, 1, monWidth, monHeight, 5, 5):setBackgroundColor(colors.lightGray)
+local speedPanel = GridContainer:new(1, 1, monWidth, monHeight, 5, 6):setBackgroundColor(colors.lightGray)
 local speedLabel = Label:new("Current Speed: " .. currentSpeed .. " RPM")
 
 ui:add(speedPanel)
@@ -61,22 +61,22 @@ speedPanel:add(Button:new("+", function()
   currentSpeed = math.min(currentSpeed + STEP, 512)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.green), 3, 2)
+end):setTextColor(colors.green), 4, 2)
 
 speedPanel:add(Button:new("-", function()
   currentSpeed = math.max(currentSpeed - STEP, 0)
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.orange), 3, 3)
+end):setTextColor(colors.orange), 4, 4)
 
 speedPanel:add(Button:new("Stop", function()
   currentSpeed = 0
   setMotorSpeed(currentSpeed)
   updateSpeedLabel()
-end):setTextColor(colors.red), 4, 2, 1, 3)
+end):setTextColor(colors.red), 5, 3)
 
-speedPanel:add(speedLabel, 2, 1, 1, 5)
-speedPanel:add(Label:new("Washer Speed Control"), 1, 2, 1, 3)
+speedPanel:add(speedLabel, 3, 3)
+speedPanel:add(Label:new("Washer Speed Control"), 1, 3)
 
 -- Start UI loop
 setMotorSpeed(currentSpeed)
