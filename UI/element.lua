@@ -1,0 +1,47 @@
+-- ui/element.lua
+local UIElement = {}
+UIElement.__index = UIElement
+
+function UIElement:new(x, y, width, height)
+  local obj = setmetatable({}, self)
+  obj.x = x
+  obj.y = y
+  obj.width = width
+  obj.height = height
+  obj.visible = true
+
+  obj.fg = colors.white
+  obj.bg = colors.black
+
+  obj.parent = nil
+  return obj
+end
+
+function UIElement:setColors(fg, bg)
+  self.fg = fg or self.fg
+  self.bg = bg or self.bg
+end
+
+function UIElement:getAbsolutePosition()
+  if self.parent then
+    local px, py = self.parent:getAbsolutePosition()
+    return px + self.x - 1, py + self.y - 1
+  end
+  return self.x, self.y
+end
+
+function UIElement:contains(px, py)
+  local ax, ay = self:getAbsolutePosition()
+  return px >= ax
+     and px < ax + self.width
+     and py >= ay
+     and py < ay + self.height
+end
+
+function UIElement:draw()
+end
+
+function UIElement:handleEvent(event, ...)
+end
+
+return UIElement
