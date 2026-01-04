@@ -16,7 +16,7 @@ monitor.setTextScale(1)
 
 local motors = peripheral.find("electric_motor", function(m) return m end, true)
 
-if #motors == 0 then
+if next(motors) == nil then
     error("No electric motors found")
 end
 
@@ -26,7 +26,7 @@ local currentSpeed = 0
 local STEP = 32
 
 local function setMotorSpeed(speed)
-    for _, motor in ipairs(motors) do
+    for _, motor in pairs(motors) do
         motor.setSpeed(speed)
     end
 end
