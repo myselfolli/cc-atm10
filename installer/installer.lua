@@ -23,6 +23,12 @@ local programs = {
     },
     dependencies = {"ui"},  -- names from libs table
   },
+  test = {
+    files = {
+      "test/main.lua",
+    },
+    dependencies = {"ui"},
+  },
 }
 
 local function multiSelectMenu(options)
