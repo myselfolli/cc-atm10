@@ -14,9 +14,17 @@ monitor.clear()
 monitor.setTextScale(1)
 
 
-local motors = peripheral.find("electric_motor", function(m) return m end, true)
+local motors = (function()
+  local t = {}
+  for _, name in ipairs(peripheral.getNames()) do
+      if peripheral.getType(name) == "electric_motor" then
+          table.insert(t, peripheral.wrap(name))
+      end
+  end
+  return t
+end)()
 
-if next(motors) == nil then
+if #motors == 0 then
     error("No electric motors found")
 end
 
@@ -26,7 +34,7 @@ local currentSpeed = 0
 local STEP = 32
 
 local function setMotorSpeed(speed)
-    for _, motor in pairs(motors) do
+    for _, motor in ipairs(motors) do
         motor.setSpeed(speed)
     end
 end
@@ -38,28 +46,32 @@ local title = Label:new(2, 2, "Washer Speed Control")
 
 local speedPanel = Container:new(1, 1, 40, 10)
 local speedLabel = Label:new(2, 3, "Current Speed: " .. currentSpeed .. " RPM")
-speedPabnel:add(speedLabel)
+
+local function updateSpeedLabel()
+  speedLabel.text = "Current Speed: " .. currentSpeed .. " RPM"
+  speedLabel:markDirty()
+  ui:draw()
+end
 
 speedPanel:add(Button:new(2, 4, 12, "+", function()
   currentSpeed = math.min(currentSpeed + STEP, 512)
   setMotorSpeed(currentSpeed)
-  speedLabel.text = "Current Speed: " .. currentSpeed .. " RPM"
-  speedLabel.dirty = true
+  updateSpeedLabel()
 end))
 
 speedPanel:add(Button:new(16, 4, 12, "-", function()
   currentSpeed = math.max(currentSpeed - STEP, 0)
   setMotorSpeed(currentSpeed)
-  speedLabel.text = "Current Speed: " .. currentSpeed .. " RPM"
-  speedLabel.dirty = true
+  updateSpeedLabel()
 end))
 
 speedPanel:add(Button:new(30, 4, 12, "Stop", function()
   currentSpeed = 0
   setMotorSpeed(currentSpeed)
-  speedLabel.text = "Current Speed: " .. currentSpeed .. " RPM"
-  speedLabel.dirty = true
+  updateSpeedLabel()
 end))
+
+speedPanel:add(speedLabel)
 
 ui:add(title)
 ui:add(speedPanel)

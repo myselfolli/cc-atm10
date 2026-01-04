@@ -31,6 +31,7 @@ function Container:draw()
   end
 
   for _, child in ipairs(self.children) do
+    child:markDirty()
     child:draw()
   end
 
